@@ -1,0 +1,1167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mekawey | Data Analyst Portfolio</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        :root {
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --dark: #0b1120;
+            --card: #151e32;
+            --muted: #94a3b8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 75px;
+        }
+
+        body {
+            background: #f1f5f9;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(11, 17, 32, 0.95) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+        }
+
+        .navbar-brand {
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary) !important;
+        }
+
+        .hero {
+            background:
+                radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.17), transparent 30%),
+                radial-gradient(circle at 10% 90%, rgba(56, 189, 248, 0.12), transparent 35%),
+                var(--dark);
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-image {
+            width: 240px;
+            height: 240px;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.25);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .glow {
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.18);
+        }
+
+        .btn-info {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #07111f;
+            font-weight: 600;
+        }
+
+        .btn-info:hover {
+            background: #7dd3fc;
+            border-color: #7dd3fc;
+            color: #07111f;
+            transform: translateY(-3px);
+        }
+
+        .btn,
+        .card,
+        .skill-icon,
+        .project-image {
+            transition: all 0.3s ease;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 55px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 12px auto 0;
+            border-radius: 10px;
+        }
+
+        .custom-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.12) !important;
+        }
+
+        .dark-card {
+            background: var(--card);
+            color: white;
+            border: 1px solid rgba(148, 163, 184, 0.15);
+        }
+
+        .skill-icon {
+            font-size: 42px;
+        }
+
+        .custom-card:hover .skill-icon {
+            transform: scale(1.12);
+        }
+
+        .project-image {
+            height: 190px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            color: white;
+            overflow: hidden;
+        }
+
+        .project-card:hover .project-image {
+            filter: brightness(1.15);
+        }
+
+        .excel-bg {
+            background: linear-gradient(135deg, #047857, #10b981);
+        }
+
+        .python-bg {
+            background: linear-gradient(135deg, #1d4ed8, #38bdf8);
+        }
+
+        .powerbi-bg {
+            background: linear-gradient(135deg, #92400e, #fbbf24);
+        }
+
+        .sql-bg {
+            background: linear-gradient(135deg, #4338ca, #818cf8);
+        }
+
+        .progress {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 20px;
+        }
+
+        .progress-bar {
+            width: 0;
+            border-radius: 20px;
+            transition: width 1.5s ease;
+        }
+
+        .dashboard {
+            background: #111b2e;
+            border-radius: 18px;
+            padding: 24px;
+            color: white;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+            height: 100%;
+        }
+
+        .chart-bars {
+            height: 120px;
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            gap: 10px;
+            padding-top: 10px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .chart-bars span {
+            width: 12%;
+            border-radius: 5px 5px 0 0;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            animation: grow 1.2s ease backwards;
+        }
+
+        .contact-section {
+            background:
+                radial-gradient(circle at 90% 10%, rgba(129, 140, 248, 0.12), transparent 30%),
+                var(--dark);
+        }
+
+        .form-control {
+            padding: 12px;
+            border-radius: 9px;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(56, 189, 248, 0.15);
+        }
+
+        .social-link {
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            text-decoration: none;
+            margin: 4px;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-4px);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes grow {
+            from { height: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero {
+                text-align: center;
+                padding: 70px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#home">
+            <span class="text-info">Mekawey</span> Analytics
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navMenu"
+                aria-controls="navMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+            <div class="navbar-nav ms-auto">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#dashboard" class="nav-link">Dashboard</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section id="home" class="hero text-white">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-7 reveal">
+                <span class="badge rounded-pill bg-info text-dark p-2 mb-3">
+                    <i class="bi bi-bar-chart-line me-1"></i>
+                    Data Analytics Portfolio
+                </span>
+
+                <h1 class="display-3 fw-bold mb-3">
+                    Hi, I'm <span class="text-gradient">Mekawey</span>
+                </h1>
+
+                <h2 class="h3 mb-3">
+                    Aspiring <span class="text-info">Data Analyst</span>
+                </h2>
+
+                <p class="lead text-white-50 mb-4">
+                    I turn raw data into meaningful insights through data
+                    cleaning, visualization, statistical analysis and
+                    interactive dashboards.
+                </p>
+
+                <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+                    <a href="#projects" class="btn btn-info btn-lg">
+                        <i class="bi bi-briefcase me-2"></i>Explore Projects
+                    </a>
+
+                    <a href="#contact" class="btn btn-outline-light btn-lg">
+                        <i class="bi bi-envelope me-2"></i>Contact Me
+                    </a>
+                </div>
+
+                <div class="mt-4 text-white-50">
+                    <i class="bi bi-database text-info me-2"></i>
+                    Data Cleaning
+                    <span class="mx-2">|</span>
+                    <i class="bi bi-graph-up text-info me-2"></i>
+                    Data Visualization
+                </div>
+            </div>
+
+            <div class="col-md-5 text-center mt-5 mt-md-0 reveal">
+                <img src="assets/WhatsApp Image 2026-10-13 at 7.39.59 PM.jpeg"
+                     alt="Mekawey Profile"
+                     class="hero-image rounded-circle">
+
+                <div class="dashboard mt-4 mx-auto text-start" style="max-width: 320px;">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="fw-bold">Analytics Overview</span>
+                        <i class="bi bi-activity text-info fs-4"></i>
+                    </div>
+
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-database text-info"></i>
+                                <div class="small text-white-50 mt-2">Data Insights</div>
+                                <div class="fw-bold">Discover</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-bar-chart text-info"></i>
+                                <div class="small text-white-50 mt-2">Reports</div>
+                                <div class="fw-bold">Visualize</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-bars mt-3">
+                        <span style="height: 40%;"></span>
+                        <span style="height: 65%;"></span>
+                        <span style="height: 48%;"></span>
+                        <span style="height: 85%;"></span>
+                        <span style="height: 60%;"></span>
+                        <span style="height: 100%;"></span>
+                    </div>
+                    <div class="small text-white-50 mt-2">Sample Data Visualization</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5 reveal">
+            <h2 class="fw-bold section-title">
+                About <span class="text-primary">Me</span>
+            </h2>
+            <p class="text-secondary">Turning data into better decisions</p>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+            <div class="col-md-6 reveal">
+                <div class="card custom-card shadow-sm h-100">
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="text-primary display-5 mb-3">
+                            <i class="bi bi-person-workspace"></i>
+                        </div>
+
+                        <h4 class="fw-bold mb-3">Who Am I?</h4>
+
+                        <p class="text-secondary">
+                            I am an Information Systems student interested in
+                            Data Analysis, business intelligence and
+                            data-driven problem solving.
+                        </p>
+
+                        <p class="text-secondary">
+                            I am continuously developing my skills in Excel,
+                            SQL, Python and Power BI to transform complex
+                            datasets into clear and useful insights.
+                        </p>
+
+                        <a href="#skills" class="btn btn-outline-primary mt-2">
+                            Discover My Skills
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 reveal">
+                <div class="card custom-card shadow-sm h-100">
+                    <div class="card-header text-white p-3"
+                         style="background: linear-gradient(90deg, #2563eb, #6366f1);">
+                        <h5 class="mb-0">
+                            <i class="bi bi-person-lines-fill me-2"></i>
+                            Personal Information
+                        </h5>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <p>
+                            <i class="bi bi-person-fill text-primary me-2"></i>
+                            <strong>Name:</strong> Mekawey
+                        </p>
+
+                        <p>
+                            <i class="bi bi-envelope-fill text-primary me-2"></i>
+                            <strong>Email:</strong> Me2796855@gmail.com
+                        </p>
+
+                        <p>
+                            <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                            <strong>Location:</strong> Egypt Dakahlyia bilqas
+                        </p>
+
+                        <p>
+                            <i class="bi bi-mortarboard-fill text-primary me-2"></i>
+                            <strong>Field:</strong> Information Systems
+                        </p>
+
+                        <p class="mb-0">
+                            <i class="bi bi-graph-up-arrow text-primary me-2"></i>
+                            <strong>Career Goal:</strong> Data Analyst
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="py-5 bg-white">
+    <div class="container py-4">
+        <div class="text-center mb-5 reveal">
+            <h2 class="fw-bold section-title">
+                Technical <span class="text-primary">Skills</span>
+            </h2>
+            <p class="text-secondary">Tools for analyzing and understanding data</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-6 col-lg-3 reveal">
+                <div class="card custom-card shadow-sm text-center h-100">
+                    <div class="card-body p-4">
+                        <i class="bi bi-file-earmark-spreadsheet skill-icon text-success"></i>
+                        <h5 class="fw-bold mt-3">Microsoft Excel</h5>
+                        <p class="text-secondary small">Data Analysis & Reporting</p>
+                        <span class="badge bg-success">Spreadsheets</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3 reveal">
+                <div class="card custom-card shadow-sm text-center h-100">
+                    <div class="card-body p-4">
+                        <i class="bi bi-database skill-icon text-primary"></i>
+                        <h5 class="fw-bold mt-3">SQL</h5>
+                        <p class="text-secondary small">Querying & Data Extraction</p>
+                        <span class="badge bg-primary">Databases</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3 reveal">
+                <div class="card custom-card shadow-sm text-center h-100">
+                    <div class="card-body p-4">
+                        <i class="bi bi-filetype-py skill-icon text-warning"></i>
+                        <h5 class="fw-bold mt-3">Python</h5>
+                        <p class="text-secondary small">Pandas & Data Processing</p>
+                        <span class="badge bg-warning text-dark">Analysis</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3 reveal">
+                <div class="card custom-card shadow-sm text-center h-100">
+                    <div class="card-body p-4">
+                        <i class="bi bi-bar-chart-fill skill-icon"
+                           style="color: #eab308;"></i>
+                        <h5 class="fw-bold mt-3">Power BI</h5>
+                        <p class="text-secondary small">Dashboards & Reports</p>
+                        <span class="badge text-dark"
+                              style="background: #fde047;">Visualization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5 g-4 reveal">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm p-4 h-100">
+                    <h5 class="fw-bold mb-4">
+                        <i class="bi bi-tools text-primary me-2"></i>
+                        Core Competencies
+                    </h5>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Data Cleaning</span>
+                            <span class="text-secondary">Learning</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" data-width="75%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Data Visualization</span>
+                            <span class="text-secondary">Learning</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" data-width="70%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>SQL & Databases</span>
+                            <span class="text-secondary">Learning</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" data-width="65%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Python for Data Analysis</span>
+                            <span class="text-secondary">Learning</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" data-width="60%"></div>
+                        </div>
+                    </div>
+
+                    <p class="small text-secondary mt-3 mb-0">
+                        Progress indicators are illustrative. Update them to match your actual skills.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm p-4 h-100">
+                    <h5 class="fw-bold mb-4">
+                        <i class="bi bi-lightbulb text-primary me-2"></i>
+                        Analytical Workflow
+                    </h5>
+
+                    <div class="d-flex mb-4">
+                        <div class="text-primary fs-3 me-3">
+                            <i class="bi bi-collection"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold mb-1">1. Collect Data</h6>
+                            <p class="text-secondary small mb-0">
+                                Gather data from spreadsheets and databases.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mb-4">
+                        <div class="text-primary fs-3 me-3">
+                            <i class="bi bi-funnel"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold mb-1">2. Clean & Prepare</h6>
+                            <p class="text-secondary small mb-0">
+                                Handle missing values, duplicates and inconsistencies.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mb-4">
+                        <div class="text-primary fs-3 me-3">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold mb-1">3. Analyze & Visualize</h6>
+                            <p class="text-secondary small mb-0">
+                                Explore patterns and create meaningful charts.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="text-primary fs-3 me-3">
+                            <i class="bi bi-clipboard-data"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold mb-1">4. Share Insights</h6>
+                            <p class="text-secondary small mb-0">
+                                Communicate findings through reports and dashboards.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="dashboard" class="py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5 reveal">
+            <h2 class="fw-bold section-title">
+                Data <span class="text-primary">Dashboard</span>
+            </h2>
+            <p class="text-secondary">A sample analytics dashboard concept</p>
+        </div>
+
+        <div class="dashboard shadow-lg reveal">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+                <div>
+                    <h4 class="fw-bold mb-1">Business Performance</h4>
+                    <p class="text-white-50 mb-0 small">Illustrative sample data</p>
+                </div>
+                <span class="badge bg-info text-dark p-2">
+                    <i class="bi bi-activity me-1"></i>Analytics Preview
+                </span>
+            </div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-lg-3">
+                    <div class="stat-box">
+                        <i class="bi bi-currency-dollar text-info fs-4"></i>
+                        <p class="text-white-50 small mt-2 mb-1">Total Revenue</p>
+                        <h4 class="fw-bold">$48,250</h4>
+                        <span class="small text-info">Sample KPI</span>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="stat-box">
+                        <i class="bi bi-cart-check text-info fs-4"></i>
+                        <p class="text-white-50 small mt-2 mb-1">Total Orders</p>
+                        <h4 class="fw-bold">1,284</h4>
+                        <span class="small text-info">Sample KPI</span>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="stat-box">
+                        <i class="bi bi-people text-info fs-4"></i>
+                        <p class="text-white-50 small mt-2 mb-1">Customers</p>
+                        <h4 class="fw-bold">856</h4>
+                        <span class="small text-info">Sample KPI</span>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="stat-box">
+                        <i class="bi bi-basket text-info fs-4"></i>
+                        <p class="text-white-50 small mt-2 mb-1">Avg. Order Value</p>
+                        <h4 class="fw-bold">$37.58</h4>
+                        <span class="small text-info">Sample KPI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="stat-box">
+                        <h6 class="fw-bold">Monthly Revenue</h6>
+
+                        <div class="chart-bars">
+                            <span style="height: 35%;"></span>
+                            <span style="height: 50%;"></span>
+                            <span style="height: 42%;"></span>
+                            <span style="height: 68%;"></span>
+                            <span style="height: 60%;"></span>
+                            <span style="height: 78%;"></span>
+                            <span style="height: 65%;"></span>
+                            <span style="height: 92%;"></span>
+                            <span style="height: 75%;"></span>
+                            <span style="height: 100%;"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between text-white-50 small mt-2">
+                            <span>Jan</span>
+                            <span>Mar</span>
+                            <span>May</span>
+                            <span>Jul</span>
+                            <span>Sep</span>
+                            <span>Oct</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="stat-box">
+                        <h6 class="fw-bold mb-3">Sales by Category</h6>
+
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between small mb-2">
+                                <span>Electronics</span>
+                                <span>40%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" style="width: 40%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between small mb-2">
+                                <span>Clothing</span>
+                                <span>30%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" style="width: 30%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between small mb-2">
+                                <span>Home & Living</span>
+                                <span>20%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" style="width: 20%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex justify-content-between small mb-2">
+                                <span>Other</span>
+                                <span>10%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" style="width: 10%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="py-5 bg-white">
+    <div class="container py-4">
+        <div class="text-center mb-5 reveal">
+            <h2 class="fw-bold section-title">
+                My <span class="text-primary">Projects</span>
+            </h2>
+            <p class="text-secondary">Data analysis and business intelligence concepts</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="card custom-card project-card shadow-sm h-100">
+                    <div class="project-image excel-bg">
+                        <i class="bi bi-file-earmark-spreadsheet"></i>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <span class="badge bg-success mb-2">Excel</span>
+                        <h5 class="fw-bold">Sales Performance Analysis</h5>
+                        <p class="text-secondary">
+                            Analyze sales data, compare monthly performance,
+                            identify top-selling products and summarize key metrics.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="badge bg-light text-dark">Pivot Tables</span>
+                            <span class="badge bg-light text-dark">Charts</span>
+                            <span class="badge bg-light text-dark">KPIs</span>
+                        </div>
+
+                        <a href="#contact" class="btn btn-outline-primary">
+                            Project Details <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="card custom-card project-card shadow-sm h-100">
+                    <div class="project-image python-bg">
+                        <i class="bi bi-filetype-py"></i>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <span class="badge bg-primary mb-2">Python</span>
+                        <h5 class="fw-bold">Data Cleaning & Exploration</h5>
+                        <p class="text-secondary">
+                            Prepare datasets using Python, handle missing values,
+                            remove duplicates and explore trends with summary statistics.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="badge bg-light text-dark">Pandas</span>
+                            <span class="badge bg-light text-dark">NumPy</span>
+                            <span class="badge bg-light text-dark">Analysis</span>
+                        </div>
+
+                        <a href="#contact" class="btn btn-outline-primary">
+                            Project Details <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="card custom-card project-card shadow-sm h-100">
+                    <div class="project-image powerbi-bg">
+                        <i class="bi bi-bar-chart-line"></i>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <span class="badge text-dark mb-2"
+                              style="background: #fde047;">Power BI</span>
+                        <h5 class="fw-bold">Interactive Sales Dashboard</h5>
+                        <p class="text-secondary">
+                            Present sales KPIs, category comparisons and performance
+                            trends in a dashboard concept designed for decision-making.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="badge bg-light text-dark">DAX</span>
+                            <span class="badge bg-light text-dark">Reports</span>
+                            <span class="badge bg-light text-dark">KPIs</span>
+                        </div>
+
+                        <a href="#contact" class="btn btn-outline-primary">
+                            Project Details <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="card custom-card project-card shadow-sm h-100">
+                    <div class="project-image sql-bg">
+                        <i class="bi bi-database-check"></i>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <span class="badge mb-2"
+                              style="background: #e0e7ff; color: #4338ca;">SQL</span>
+                        <h5 class="fw-bold">Customer Data Analysis</h5>
+                        <p class="text-secondary">
+                            Query relational datasets to summarize customer activity,
+                            group records and extract useful business information.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="badge bg-light text-dark">SELECT</span>
+                            <span class="badge bg-light text-dark">JOIN</span>
+                            <span class="badge bg-light text-dark">GROUP BY</span>
+                        </div>
+
+                        <a href="#contact" class="btn btn-outline-primary">
+                            Project Details <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="card custom-card project-card shadow-sm h-100">
+                    <div class="project-image"
+                         style="background: linear-gradient(135deg, #0f766e, #2dd4bf);">
+                        <i class="bi bi-people"></i>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <span class="badge bg-info text-dark mb-2">Business Analysis</span>
+                        <h5 class="fw-bold">Customer Insights Report</h5>
+                        <p class="text-secondary">
+                            Explore customer segments, purchasing patterns and
+                            performance indicators to support business decisions.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="badge bg-light text-dark">Segmentation</span>
+                            <span class="badge bg-light text-dark">Insights</span>
+                        </div>
+
+                        <a href="#contact" class="btn btn-outline-primary">
+                            Project Details <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal">
+                <div class="card custom-card project-card shadow-sm h-100">
+                    <div class="project-image"
+                         style="background: linear-gradient(135deg, #7c3aed, #c084fc);">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <span class="badge mb-2"
+                              style="background: #ede9fe; color: #6d28d9;">Statistics</span>
+                        <h5 class="fw-bold">Exploratory Data Analysis</h5>
+                        <p class="text-secondary">
+                            Investigate distributions, compare variables, identify
+                            outliers and communicate findings with clear visualizations.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="badge bg-light text-dark">Statistics</span>
+                            <span class="badge bg-light text-dark">Charts</span>
+                        </div>
+
+                        <a href="#contact" class="btn btn-outline-primary">
+                            Project Details <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5 reveal">
+            <p class="text-secondary small">
+                These project descriptions are portfolio examples. Replace them with your actual work and repository links.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section text-white py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5 reveal">
+            <h2 class="fw-bold section-title">
+                Let's <span class="text-info">Connect</span>
+            </h2>
+            <p class="text-white-50">
+                Have an opportunity or a data project in mind? Get in touch.
+            </p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-6 reveal">
+                <div class="card border-0 shadow-lg rounded-4">
+                    <div class="card-body p-4 p-lg-5">
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" id="name" name="name"
+                                       class="form-control"
+                                       placeholder="Enter your name" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" id="email" name="email"
+                                       class="form-control"
+                                       placeholder="name@example.com" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" id="subject" name="subject"
+                                       class="form-control"
+                                       placeholder="What would you like to discuss?" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Your Message</label>
+                                <textarea id="message" name="message"
+                                          class="form-control" rows="4"
+                                          placeholder="Write your message..."
+                                          required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-info w-100 py-3">
+                                <i class="bi bi-send me-2"></i>Send Message
+                            </button>
+
+                            <p id="formStatus" class="small mt-3 mb-0 text-secondary"
+                               role="status"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4 reveal">
+            <a href="https://www.facebook.com/share/1ML3HYtLNF/" class="social-link"
+               aria-label="facebook">
+                <i class="bi bi-envelope fs-5"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/mahmoud-mohamed-7ba535326?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank"
+               rel="noopener noreferrer" class="social-link"
+               aria-label="LinkedIn">
+                <i class="bi bi-linkedin fs-5"></i>
+            </a>
+
+            <a href="https://github.com/Mekawey311" target="_blank"
+               rel="noopener noreferrer" class="social-link"
+               aria-label="GitHub">
+                <i class="bi bi-github fs-5"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="text-white text-center py-4"
+        style="background: #050914;">
+    <div class="container">
+        <h5 class="fw-bold">
+            <span class="text-info">Mekawey</span> Analytics
+        </h5>
+
+        <p class="text-white-50 mb-2">
+            Turning Data Into Insights.
+        </p>
+
+        <p class="small text-white-50 mb-0">
+            &copy; 2026 Mekawey. All Rights Reserved.
+        </p>
+    </div>
+</footer>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const revealElements = document.querySelectorAll(".reveal");
+        const progressBars = document.querySelectorAll(".progress-bar[data-width]");
+
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+
+                        entry.target.querySelectorAll(".progress-bar[data-width]")
+                            .forEach(function (bar) {
+                                bar.style.width = bar.dataset.width;
+                            });
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.12
+            });
+
+            revealElements.forEach(function (element) {
+                observer.observe(element);
+            });
+        } else {
+            revealElements.forEach(function (element) {
+                element.classList.add("show");
+            });
+
+            progressBars.forEach(function (bar) {
+                bar.style.width = bar.dataset.width;
+            });
+        }
+
+        const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+        const sections = document.querySelectorAll("section[id]");
+
+        const sectionObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(function (link) {
+                        link.classList.toggle(
+                            "active",
+                            link.getAttribute("href") === "#" + entry.target.id
+                        );
+                    });
+                }
+            });
+        }, {
+            rootMargin: "-25% 0px -60% 0px"
+        });
+
+        sections.forEach(function (section) {
+            sectionObserver.observe(section);
+        });
+
+        navLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+                const navMenu = document.getElementById("navMenu");
+
+                if (navMenu.classList.contains("show")) {
+                    bootstrap.Collapse.getOrCreateInstance(navMenu).hide();
+                }
+            });
+        });
+
+        const contactForm = document.getElementById("contactForm");
+        const formStatus = document.getElementById("formStatus");
+
+        contactForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            formStatus.textContent =
+                "The form is a front-end demo. Connect a form service or backend to send messages.";
+
+            formStatus.classList.remove("text-danger");
+            formStatus.classList.add("text-success");
+        });
+    });
+</script>
+
+</body>
+</html>
+```
